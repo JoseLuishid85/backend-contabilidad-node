@@ -6,10 +6,10 @@ const createUser = async (req, res) => {
     if (!req.user) {
         return res.status(500).json({ msg: 'Token Error' });
     }*/
-    
+
     const data = req.body;
 
-    
+
     try {
 
         await User.sync();
@@ -41,7 +41,7 @@ const createUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
 
-    let users = await User.findAll({ attributes: { exclude: ['password'] }  });
+    let users = await User.findAll({ attributes: { exclude: ['password'] } });
 
     res.status(200).json(users);
 }
@@ -81,7 +81,7 @@ const updateUser = async (req, res) => {
     const data = req.body;
 
     try {
-         await User.update({
+        await User.update({
             first_name: data.first_name,
             last_name: data.last_name,
             role: data.role,
@@ -89,7 +89,7 @@ const updateUser = async (req, res) => {
         }, { where: { id } });
 
 
-        const updatedUser = await User.findOne({ where: { id: id }, attributes: { exclude: ['password'] } } )
+        const updatedUser = await User.findOne({ where: { id: id }, attributes: { exclude: ['password'] } })
 
 
         res.json({ ok: true, user: updatedUser });
@@ -108,8 +108,8 @@ const toggleUserStatus = async (req, res) => {
 
     try {
         await User.update({ status: newStatus }, { where: { id } });
-        
-        const updatedUser = await User.findOne({ where: { id: id }, attributes: { exclude: ['password'] } } )
+
+        const updatedUser = await User.findOne({ where: { id: id }, attributes: { exclude: ['password'] } })
 
         res.status(200).json({
             ok: true,
