@@ -19,8 +19,8 @@ sequelize.sync({ alter: false })
     .catch(err => console.error('Error synchronizing DB:', err));
 
 // Routes
-app.use('/accounting/api/login', require('./routes/authRouter.js'));
-app.use('/accounting/api/users', require('./routes/userRouter.js'));
+app.use('/accounting2/api/login', require('./routes/authRouter.js'));
+app.use('/accounting2/api/users', require('./routes/userRouter.js'));
 //app.use('/accounting/api/suppliers', require('./routes/supplierRouter.js'));
 //app.use('/accounting/api/purchases', require('./routes/purchaseRouter.js'));
 
