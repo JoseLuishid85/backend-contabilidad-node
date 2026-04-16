@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 const login = async (req, res) => {
     const { email, password } = req.body;
 
-    res.json({ msg: 'Todo Bien aqui' });
-    /*
     try {
         // 1. Verificar si el usuario existe
         const user = await User.findOne({ where: { email } });
@@ -29,7 +27,7 @@ const login = async (req, res) => {
         const token = jwt.sign(
             { id: user.id, email: user.email, role: user.role },
             process.env.JWT_SECRET,
-            { expiresIn: '5D' } 
+            { expiresIn: '5D' }
         );
 
         res.json({
@@ -47,7 +45,7 @@ const login = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: 'Error al iniciar sesión' });
-    }*/
+    }
 };
 
 module.exports = { login };
