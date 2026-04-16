@@ -21,8 +21,8 @@ sequelize.sync({ alter: false })
 // Routes
 app.use('/accounting2/api/login', require('./routes/authRouter.js'));
 app.use('/accounting2/api/users', require('./routes/userRouter.js'));
-app.use('/accounting/api/suppliers', require('./routes/supplierRouter.js'));
-//app.use('/accounting/api/purchases', require('./routes/purchaseRouter.js'));
+app.use('/accounting2/api/suppliers', require('./routes/supplierRouter.js'));
+//app.use('/accounting2/api/purchases', require('./routes/purchaseRouter.js'));
 
 const PORT = process.env.PORT || 4000;
 
