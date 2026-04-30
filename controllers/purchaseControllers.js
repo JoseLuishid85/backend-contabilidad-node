@@ -28,7 +28,10 @@ const getPurchases = async (req, res) => {
     try {
         // Incluimos los datos del proveedor para que el reporte sea útil
         const purchases = await Purchase.findAll({
-            include: [{ model: Supplier, attributes: ['name', 'rif'] }]
+            include: {
+                model: Supplier,
+                as: 'supplier', 
+            }
         });
         res.status(200).json(purchases);
     } catch (error) {
@@ -40,7 +43,10 @@ const getPurchaseById = async (req, res) => {
     const { id } = req.params;
     try {
         const purchase = await Purchase.findByPk(id, {
-            include: [{ model: Supplier, attributes: ['name', 'rif', 'email'] }]
+            include: {
+                model: Supplier,
+                as: 'supplier', 
+            }
         });
 
         if (!purchase) {
